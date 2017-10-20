@@ -1,0 +1,36 @@
+<script type="text/x-red" data-template-name="cron-inject">
+    <div class="form-row">
+        <label for="node-input-crontab"><i class="fa fa-calendar"></i> Crontab</label>
+        <input type="text" id="node-input-crontab" placeholder="* * * * * *">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="cron-inject">
+    <p>Injectornode with cron-like scheduling.</p>
+    <p>The node broadcast a timestamp in the payload every time the cron event triggers.</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('cron-inject', {
+        category: 'input',
+        color: "#a6bbcf",
+        defaults: {
+            crontab: { value: "* * * * * *"},
+            name: { value: "" }
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "timer.png",
+        label: function () {
+            return this.name || "cron-inject";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+    });
+
+</script>
